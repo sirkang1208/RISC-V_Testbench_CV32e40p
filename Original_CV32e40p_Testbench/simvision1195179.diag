@@ -1,0 +1,72 @@
+*** Message Type: info ***
+When: Thu Sep 26 04:29:20 PM KST 2024
+SimVision started.
+Version: TOOL:  simvision       20.09-s001
+User: kbkang
+Host: eagle
+Platform: Linux/x86_64/5.15.0-119-generic
+Started: Thu Sep 26 04:29:20 PM KST 2024
+Command: /TOOLS/CADENCE/XCELIUMMAIN2009/tools.lnx86/simvision/bin/simvision.exe -connect dc:eagle:48581 -nocopyright
+Work Directory: /home/kbkang/RISC-V_Testbench_CV32e40p/original_CV32e40p_Testbench
+ 
+*** Message Type: info ***
+When: Thu Sep 26 04:29:20 PM KST 2024
+Create browser window: "Design Browser 1"
+ 
+*** Message Type: info ***
+When: Thu Sep 26 04:29:22 PM KST 2024
+Create console window: "Console"
+ 
+*** Message Type: info ***
+When: Thu Sep 26 04:29:25 PM KST 2024
+Connect to Simulator
+      Design: worklib.tb_top:sv
+   Languages: verilog assertion
+   Simulator: XM-Sim
+     Version: TOOL:        xmsim   20.09-s001
+        User: kbkang
+        Host: eagle
+Time Started: Thu Sep 26 04:29:16 PM KST 2024
+  Process ID: 1195058
+   Directory: /home/kbkang/RISC-V_Testbench_CV32e40p/original_CV32e40p_Testbench
+     Command: xrun -gui -access +rwc -clean -smartorder -sv -top worklib.tb_top -timescale 1ns/1ps +define+CV32E40P_APU_TRACE -uvmhome CDNS-1.2-ML -f cv32e40p_manifest.flist /home/kbkang/RISC-V_Testbench_CV32e40p/original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/include/perturbation_defines.sv /home/kbkang/RISC-V_Testbench_CV32e40p/original_CV32e40p_Testbench/cv32e40p/tb/core/tb_top.sv /home/kbkang/RISC-V_Testbench_CV32e40p/original_CV32e40p_Testbench/cv32e40p/tb/core/cv32e40p_tb_wrapper.sv /home/kbkang/RISC-V_Testbench_CV32e40p/original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv /home/kbkang/RISC-V_Testbench_CV32e40p/original_CV32e40p_Testbench/cv32e40p/tb/core/dp_ram.sv /home/kbkang/RISC-V_Testbench_CV32e40p/original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/riscv_random_stall.sv /home/kbkang/RISC-V_Testbench_CV32e40p/original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/riscv_random_interrupt_generator.sv /home/kbkang/RISC-V_Testbench_CV32e40p/original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/riscv_rvalid_stall.sv /home/kbkang/RISC-V_Testbench_CV32e40p/original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/riscv_gnt_stall.sv +firmware=/home/kbkang/RISC-V_Testbench_CV32e40p/original_CV32e40p_Testbench/cv32e40p/tests/custom/dhrystone/dhrystone.hex
+
+ 
+*** Message Type: info ***
+When: Thu Sep 26 04:29:26 PM KST 2024
+Create utility window: "Properties"
+ 
+*** Message Type: info ***
+When: Thu Sep 26 04:29:38 PM KST 2024
+Create waveform window: "Waveform 1"
+ 
+*** Message Type: info ***
+When: Thu Sep 26 04:29:40 PM KST 2024
+Delete waveform window: "Waveform 1"
+ 
+*** Message Type: info ***
+When: Thu Sep 26 04:29:42 PM KST 2024
+Create schematic window: "Schematic Tracer 1"
+ 
+*** Message Type: error ***
+When: Thu Sep 26 05:04:37 PM KST 2024
+recursive call not supported
+    while executing
+"[$itk_component(schematic) component nlview] bind shift-stroke-1 -action instdrag -echo_type instdrag -autoscroll"
+    (object "::.schematicWindow0" method "::SchematicWindow::_bindZoom" body line 11)
+    invoked from within
+"_bindZoom"
+    ("eval" body line 1)
+    invoked from within
+"eval $args"
+    (object "::.schematicWindow0" method "::SchematicWindow::_mutexEx" body line 5)
+    invoked from within
+"_mutexEx _bindZoom"
+    (object "::.schematicWindow0" method "::SchematicWindow::_displaystatusobject" body line 11)
+    invoked from within
+"::.schematicWindow0 _displaystatusobject .schematicWindow0.work.user.scrollframe.schematic.nlview 701 295"
+    (in namespace inscope "::SchematicWindow" script line 1)
+    invoked from within
+"namespace inscope ::SchematicWindow {::.schematicWindow0 _displaystatusobject .schematicWindow0.work.user.scrollframe.schematic.nlview 701 295}"
+    (command bound to event)
+ 

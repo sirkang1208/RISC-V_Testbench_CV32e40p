@@ -7,7 +7,7 @@
 //   This adapter accepts OBI v1.5.0 transfers and translates them into 
 // AHB-lite (ARM IHI 0033C) transfers. 
 
-module obi2ahbm_adapter_data (
+module obi2ahbm_adapter (
     // Clock and reset
     input             hclk_i,                // (I) AHB clock
     input             hresetn_i,            // (I) AHB reset, active LOW
@@ -24,9 +24,6 @@ module obi2ahbm_adapter_data (
     input  logic  [31:0]   hrdata_i,       // (I) 32-bit AHB read data bus
     input  logic           hready_i,       // (I) Status of transfer
     input  logic           hresp_i,        // (I) Transfer response
-    
-    //add bus request signal for multi master
-    output logic           hbusreqd_o,        // (O) bus request
     
     // Data interface from core
     input  logic           data_req_i,     // (I) Request ready
@@ -58,11 +55,8 @@ module obi2ahbm_adapter_data (
     parameter TIE_LO              =  1'b0;
     
     parameter AHB_FSM_WAIT        =  2'b00;
-    parameter AHB_FSM_DATA        =  2'b10; 
-
-    // 
-    parameter HBUS_REQUEST        =  1'b1;
-
+    parameter AHB_FSM_DATA        =  2'b10;
+ 
     // ********** //
     // Wires/Regs //
     // ********** //
@@ -103,14 +97,7 @@ module obi2ahbm_adapter_data (
     
     // The valid signal should only assert when transitioning to the DATA state
     assign data_rvalid_o =  ahb_fsm_reg == AHB_FSM_DATA ? hready_i : 1'b0;
-    
-    // send request to bus when data_req become 1
-    assign hbusreqd_o = data_req_i;
-
-    // should not change the below codes
-    // can easily make errors
-
-
+       
     // ************* //
     // Clocked Logic //
     // ************* //
@@ -126,7 +113,8 @@ module obi2ahbm_adapter_data (
           // Write data needs to come one cycle after per AHB protocol
           hwdata_o          <= 32'h00000000;
           
-          hwrite_m_reg      <= 1'b0;
+          hwrite_m_reg          <= 1'b0;
+          
           ahb_fsm_reg       <= AHB_FSM_WAIT;
  
           prev_data_gnt_o   <= 1'b0;
@@ -178,6 +166,12 @@ module obi2ahbm_adapter_data (
            // Idles until data_gnt_o is received
            // Once data_gnt_o is received, this is the address phase of AHB
            // and all ahb signals are fed through from the core
+           $display("AHB_FSM_WAIT_logic_change");
+           $display("ahb_fsm_reg : %b", ahb_fsm_reg);
+           $display("data_addr_i : %b", data_addr_i);
+           $display("haddr_o : %b", haddr_o);
+           $display("data_gnt_o : %b", data_gnt_o);
+
            if (data_gnt_o) begin
              // lint_checking TIELOG off
              // Non-bufferable, non-cacheable data accesses are supported. The 
@@ -190,8 +184,13 @@ module obi2ahbm_adapter_data (
              // through from the core to the corresponding AHB signals. For 
              // htrans_o, if data_gnt_o is given, the ahb is in address phase,
              // and the transaction is non-sequential (1'b10).
+             $display("data_gnt_o = 1");
              haddr_o = data_addr_i;
+             $display("data_addr_i : %b", data_addr_i);
+             $display("haddr_o : %b", haddr_o);
+             
              hwrite_o = data_we_i;
+ 
              // lint_checking TIELOG off
              htrans_o = 2'b10;
              // lint_checking TIELOG on
@@ -212,6 +211,11 @@ module obi2ahbm_adapter_data (
          AHB_FSM_DATA: begin
            // DATA phase
            // read data is fed through from the core
+          $display("AHB_FSM_DATA_logic_change");
+          $display("ahb_fsm_reg : %b", ahb_fsm_reg);
+          $display("data_addr_i : %b", data_addr_i);
+          $display("haddr_o : %b", haddr_o);
+          $display("data_gnt_o : %b", data_gnt_o);
            data_rdata_o = hrdata_i;
  
            // If data_gnt_o is also given during the data phase, then it is also
@@ -227,9 +231,14 @@ module obi2ahbm_adapter_data (
              // The address, transfer request, and write enable can be fed
              // through from the core to the corresponding AHB signals. For 
              // htrans_o, if data_gnt_o is given, the ahb is in address phase,
-             // and the transaction is non-sequential (1'b10).
+             // and the transaction is non-sequential (1'b10).             
+             $display("data_gnt_o = 1");
              haddr_o = data_addr_i;
+             $display("data_addr_i : %b", data_addr_i);
+             $display("haddr_o : %b", haddr_o);
+
              hwrite_o = data_we_i;
+ 
              // lint_checking TIELOG off
              htrans_o = 2'b10;
              // lint_checking TIELOG on
@@ -248,8 +257,14 @@ module obi2ahbm_adapter_data (
            end
          end
          default: begin
+          $display("Default_logic_change");
+          $display("ahb_fsm_reg : %b", ahb_fsm_reg);
+          $display("data_addr_i : %b", data_addr_i);
+          $display("haddr_o : %b", haddr_o);
            hprot_o = {HPROT_NONCACHEABLE, HPROT_NONBUFFERABLE, priv_mode_i, HPROT_DATAACCESS};
            haddr_o = data_addr_i;
+           $display("data_addr_i : %b", data_addr_i);
+           $display("haddr_o : %b", haddr_o);
            hwrite_o = data_we_i;
            htrans_o = 2'b00;
            hsize_o = {TIE_LO,TIE_LO,TIE_LO};
@@ -266,7 +281,10 @@ module obi2ahbm_adapter_data (
        // IDLE/ADDRESS phase 
        // Waits until "ADDRESS Phase" occurs during data_gnt_o
        AHB_FSM_WAIT: begin
+          $display("AHB_FSM_WAIT_reg_state_change");
+          $display("data_gnt_o : %b", data_gnt_o);
          if (data_gnt_o) begin
+          $display("ahb_fsm_reg : %b", ahb_fsm_reg);
            ahb_fsm_reg_nxt = AHB_FSM_DATA;
          end
        end
@@ -275,20 +293,25 @@ module obi2ahbm_adapter_data (
        // If data_gnt_o it is also the ADDRESS phase for the next set of data so it stays
        // in the data phase on the next cycle
        AHB_FSM_DATA: begin
+        $display("AHB_FSM_DATA_reg_state_change");
+        $display("data_gnt_o : %b", data_gnt_o);
          if (data_rvalid_o) begin
            if (data_gnt_o) begin
-             ahb_fsm_reg_nxt = AHB_FSM_DATA;
+            $display("ahb_fsm_reg : %b", ahb_fsm_reg);
+            ahb_fsm_reg_nxt = AHB_FSM_DATA;
            end else begin
-             ahb_fsm_reg_nxt = AHB_FSM_WAIT;
+            $display("ahb_fsm_reg : %b", ahb_fsm_reg);
+            ahb_fsm_reg_nxt = AHB_FSM_WAIT;
            end
          end
        end
          default: begin
+          $display("Default_reg_state_change");
            ahb_fsm_reg_nxt = ahb_fsm_reg;
          end
      endcase
     end
     // lint_checking TRNMBT on   
     // lint_checking HASUPC on
- endmodule : obi2ahbm_adapter_data
+ endmodule : obi2ahbm_adapter
  

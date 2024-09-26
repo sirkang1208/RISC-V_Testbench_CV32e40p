@@ -88,50 +88,6 @@ module top_m2s1
       .exit_valid_o   ( exit_valid   ),
       .exit_value_o   ( exit_value   )
    );
-
-   // cv32e40p_obi_interface #(
-   //    .TRANS_STABLE(1)
-   // ) u_obi_interface (
-   //    .clk           (HCLK),
-   //    .rst_n         (HRESETn),
-
-   //    .trans_valid_i (trans_valid),
-   //    .trans_ready_o (trans_ready),
-   //    .trans_addr_i  (trans_addr),
-   //    .trans_we_i    (trans_we),
-   //    .trans_be_i    (trans_be),
-   //    .trans_wdata_i (trans_wdata),
-   //    .trans_atop_i  (trans_atop),
-
-   //    .resp_valid_o  (resp_valid),
-   //    .resp_rdata_o  (resp_rdata),
-   //    .resp_err_o    (resp_err),  // Unused for now
-
-   //    .obi_req_o     (obi_req_o),
-   //    .obi_gnt_i     (obi_gnt_i),
-   //    .obi_addr_o    (obi_addr_o),
-   //    .obi_we_o      (obi_we_o),
-   //    .obi_be_o      (obi_be_o),
-   //    .obi_wdata_o   (obi_wdata_o),
-   //    .obi_rdata_i   (obi_rdata_i),
-   //    .obi_rvalid_i  (obi_rvalid_i),
-   //    .obi_err_i     (obi_err_i),  // External bus error (validity defined by obi_rvalid_i)
-   //    .obi_atop_o    (obi_atop_o)  // Not (yet) defined in OBI 1.0 spec
-   // );
-
-   //---------------------------------------------------------------------------
-//    integer idz;
-//    initial begin
-//        wait(HRESETn==1'b0);
-//        wait(HRESETn==1'b1);
-//        for (idz=0; idz<NUM_SLV; idz=idz+1) begin
-//             wait(done[idz]==1'b1);
-//        end
-//        repeat (5) @ (posedge HCLK);
-//        $finish(2);
-//    end
-   //---------------------------------------------------------------------------
-
 	
    //---------------------------------------------------------------------------
    initial begin

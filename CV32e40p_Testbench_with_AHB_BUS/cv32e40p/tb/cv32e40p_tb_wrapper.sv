@@ -15,6 +15,9 @@
 //
 // SPDX-License-Identifier: Apache-2.0 WITH SHL-0.51
 
+// most of the connection changed
+// Bus delay should be set but error occurs
+
 module cv32e40p_tb_wrapper
     #(parameter // Parameters used by TB
                 INSTR_RDATA_WIDTH = 32,
@@ -110,6 +113,9 @@ module cv32e40p_tb_wrapper
     logic                         irq_ack;
     logic [0:4]                   irq_id_out;
     logic                         irq_sec;
+
+    // pending signal related to data_gnt
+    // if pending signal is 1, data_gnt becomes 0
     logic                         pending_dbus_xfer_i = 1'b0;
     logic                         pending_dbus_xfer_d = 1'b0;
 
@@ -189,6 +195,7 @@ module cv32e40p_tb_wrapper
         .hrdata_i      (M_HRDATA    ),       // (I) 32-bit AHB read data bus
         .hready_i      (M_HREADY    ),       // (I) Status of transfer
         .hresp_i       (M_HRESP     ),        // (I) Transfer response
+        //bus request signal added for arbiter
         .hbusreqd_o    (M_HBUSREQ0  ),        // (O) bus request
     
     // Data interface from core
@@ -226,8 +233,10 @@ module cv32e40p_tb_wrapper
         .hrdata_i      (M_HRDATA    ),       // (I) 32-bit AHB read data bus
         .hready_i      (M_HREADY    ),       // (I) Status of transfer
         .hresp_i       (M_HRESP     ),        // (I) Transfer response
+        //bus request signal added for arbiter
         .hbusreqi_o    (M_HBUSREQ1  ),        // (O) bus request
 
+    //found that it doesn't need tied signal
 
     // Data interface from core
         .data_req_i    (instr_req),     // (I) Request ready
@@ -311,47 +320,6 @@ module cv32e40p_tb_wrapper
         , .HREADYin  (S_HREADY      )
         , .HREADYout (S_HREADYout0  )
     );
-
-    // this handles read to RAM and memory mapped pseudo peripherals
-    // mm_ram
-    //     #(.RAM_ADDR_WIDTH (RAM_ADDR_WIDTH),
-    //       .INSTR_RDATA_WIDTH (INSTR_RDATA_WIDTH))
-    // ram_i
-    //     (.clk_i          ( clk_i                                     ),
-    //      .rst_ni         ( rst_ni                                    ),
-    //      .dm_halt_addr_i ( DM_HALTADDRESS                            ),
-
-    //      .instr_req_i    ( instr_req                                 ),
-    //      .instr_addr_i   ( { {10{1'b0}},
-    //                          instr_addr[RAM_ADDR_WIDTH-1:0]
-    //                        }                                         ),
-    //      .instr_rdata_o  ( instr_rdata                               ),
-    //      .instr_rvalid_o ( instr_rvalid                              ),
-    //      .instr_gnt_o    ( instr_gnt                                 ),
-
-    //      .data_req_i     ( data_req                                  ),
-    //      .data_addr_i    ( data_addr                                 ),
-    //      .data_we_i      ( data_we                                   ),
-    //      .data_be_i      ( data_be                                   ),
-    //      .data_wdata_i   ( data_wdata                                ),
-    //      .data_rdata_o   ( data_rdata                                ),
-    //      .data_rvalid_o  ( data_rvalid                               ),
-    //      .data_gnt_o     ( data_gnt                                  ),
-
-    //      .irq_id_i       ( irq_id_out                                ),
-    //      .irq_ack_i      ( irq_ack                                   ),
-    //      .irq_o          ( irq                                       ),
-
-    //      .debug_req_o    ( debug_req                                 ),
-
-    //      .pc_core_id_i   ( cv32e40p_core_i.pc_id                     ),
-
-    //      .tests_passed_o ( tests_passed_o                            ),
-    //      .tests_failed_o ( tests_failed_o                            ),
-    //      .exit_valid_o   ( exit_valid_o                              ),
-    //      .exit_value_o   ( exit_value_o                              ));
-
-
 
 
 endmodule // cv32e40p_tb_wrapper

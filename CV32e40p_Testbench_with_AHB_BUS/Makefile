@@ -58,9 +58,9 @@ include $(TEST_FLAGS_MAKE)
 ###############################################################################
 # Common Makefiles:
 #  -Variables for RTL and other dependencies (e.g. RISCV-DV)
-include requirement/ExternalRepos.mk
+include cv32e40p/tb/ExternalRepos.mk
 #  -Core Firmware and the RISCV GCC Toolchain (SDK)
-include requirement/Common.mk
+include cv32e40p/tb/Common.mk
 
 XRUN              = xrun
 XRUN_FLAGS        = -access +rwc -gui -clean -smartorder -sv -top worklib.top_m2s1 -timescale 1ns/1ps +define+CV32E40P_APU_TRACE -uvmhome CDNS-1.2-ML
@@ -283,6 +283,7 @@ clean:
 	/bin/rm -rf waves.shm
 	/bin/rm -rf xcelium.d
 	/bin/rm -f xrun.*
+	
 	
 
 distclean: clean
