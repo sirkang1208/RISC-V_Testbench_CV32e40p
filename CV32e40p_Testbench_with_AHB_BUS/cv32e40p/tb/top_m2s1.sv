@@ -120,8 +120,8 @@ module top_m2s1
 		end
 	end
 
-   // // we either load the provided firmware or execute a small test program that
-   // // doesn't do more than an infinite loop with some I/O
+   // we either load the provided firmware or execute a small test program that
+   // doesn't do more than an infinite loop with some I/O
    // initial begin: load_prog
    //    automatic string firmware;
    //    automatic int prog_size = 6;

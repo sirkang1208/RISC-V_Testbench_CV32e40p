@@ -1,0 +1,21 @@
+//
+// File created by:  xrun
+// Do not modify this file
+//
+-sv
+-DEFINE
+CV32E40P_APU_TRACE
+-INCDIR
+cv32e40p/rtl/include
+-INCDIR
+cv32e40p/rtl/../bhv
+-INCDIR
+cv32e40p/rtl/../bhv/include
+-INCDIR
+cv32e40p/rtl/../sva
+-I_INCDIR
+/TOOLS/CADENCE/XCELIUMMAIN2009/tools/methodology/UVM/CDNS-1.2-ML/sv/src
+-DEFINE
+USE_PARAMETERIZED_WRAPPER
+-I_INCDIR
+/TOOLS/CADENCE/XCELIUMMAIN2009/tools/methodology/UVM/CDNS-1.2-ML/additions/sv

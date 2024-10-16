@@ -1,0 +1,9 @@
+define XMSIMRC	( /TOOLS/CADENCE/XCELIUMMAIN2009/tools/xcelium/files/xmsimrc, ~/.xmsimrc )
+define AMSRC	( /TOOLS/CADENCE/XCELIUMMAIN2009/tools/xcelium/files/amsrc, ~/.amsrc )
+include ./hdlrun.var
+define SNAPSHOT worklib.cv32e40p_wrapper:sv
+DEFINE RUNMODEDEFAULT 1
+DEFINE LIB_MAP (  => worklib )
+DEFINE LIB_MAP ($LIB_MAP, + => worklib )
+define ELAB_SNAPSHOT
+define SNAPSHOT worklib.top_m2s1:sv

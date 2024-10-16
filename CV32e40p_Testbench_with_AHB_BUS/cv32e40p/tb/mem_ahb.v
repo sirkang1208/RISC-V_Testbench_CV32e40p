@@ -49,14 +49,14 @@ module mem_ahb
    reg                  T_WR, T_WR_D;
    wire                 T_ENABLED = HSEL && HREADYin && HTRANS[1];
    //---------------------------------------------------------------------------
-    initial $readmemh("/home/kbkang/xcelium_tb/dhrystone.hex", mem);
+    // initial $readmemh("/home/kbkang/xcelium_tb/dhrystone.hex", mem);
     
-    integer i;
-    initial begin
-       for(i = 0; i < 100+2;i=i+1) begin
-            $display("mem[%0d] = %h", i, mem[i]);
-        end
-    end
+    // integer i;
+    // initial begin
+    //    for(i = 0; i < 100+2;i=i+1) begin
+    //         $display("mem[%0d] = %h", i, mem[i]);
+    //     end
+    // end
 
    always @ (posedge HCLK or negedge HRESETn) begin
        if (HRESETn==0) begin

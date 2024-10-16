@@ -1,0 +1,550 @@
+xrun: 20.09-s001: (c) Copyright 1995-2020 Cadence Design Systems, Inc.
+TOOL:	xrun	20.09-s001: Started on Oct 16, 2024 at 16:12:18 KST
+xrun
+	-gui
+	-access +rwc
+	-clean
+	-smartorder
+	-sv
+	-top worklib.tb_top
+	-timescale 1ns/1ps
+	+define+CV32E40P_APU_TRACE
+	-uvmhome CDNS-1.2-ML
+	-f cv32e40p_manifest.flist
+		+incdir+cv32e40p/rtl/include
+		+incdir+cv32e40p/rtl/../bhv
+		+incdir+cv32e40p/rtl/../bhv/include
+		+incdir+cv32e40p/rtl/../sva
+		cv32e40p/rtl/include/cv32e40p_apu_core_pkg.sv
+		cv32e40p/rtl/include/cv32e40p_fpu_pkg.sv
+		cv32e40p/rtl/include/cv32e40p_pkg.sv
+		cv32e40p/rtl/../bhv/include/cv32e40p_tracer_pkg.sv
+		cv32e40p/rtl/cv32e40p_if_stage.sv
+		cv32e40p/rtl/cv32e40p_cs_registers.sv
+		cv32e40p/rtl/cv32e40p_register_file_ff.sv
+		cv32e40p/rtl/cv32e40p_load_store_unit.sv
+		cv32e40p/rtl/cv32e40p_id_stage.sv
+		cv32e40p/rtl/cv32e40p_aligner.sv
+		cv32e40p/rtl/cv32e40p_decoder.sv
+		cv32e40p/rtl/cv32e40p_compressed_decoder.sv
+		cv32e40p/rtl/cv32e40p_fifo.sv
+		cv32e40p/rtl/cv32e40p_prefetch_buffer.sv
+		cv32e40p/rtl/cv32e40p_hwloop_regs.sv
+		cv32e40p/rtl/cv32e40p_mult.sv
+		cv32e40p/rtl/cv32e40p_int_controller.sv
+		cv32e40p/rtl/cv32e40p_ex_stage.sv
+		cv32e40p/rtl/cv32e40p_alu_div.sv
+		cv32e40p/rtl/cv32e40p_alu.sv
+		cv32e40p/rtl/cv32e40p_ff_one.sv
+		cv32e40p/rtl/cv32e40p_popcnt.sv
+		cv32e40p/rtl/cv32e40p_apu_disp.sv
+		cv32e40p/rtl/cv32e40p_controller.sv
+		cv32e40p/rtl/cv32e40p_obi_interface.sv
+		cv32e40p/rtl/cv32e40p_prefetch_controller.sv
+		cv32e40p/rtl/cv32e40p_sleep_unit.sv
+		cv32e40p/rtl/cv32e40p_core.sv
+		cv32e40p/rtl/../bhv/cv32e40p_sim_clock_gate.sv
+		cv32e40p/rtl/../bhv/cv32e40p_wrapper.sv
+	/home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/include/perturbation_defines.sv
+	/home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/tb_top.sv
+	/home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/cv32e40p_tb_wrapper.sv
+	/home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv
+	/home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/dp_ram.sv
+	/home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/riscv_random_stall.sv
+	/home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/riscv_random_interrupt_generator.sv
+	/home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/riscv_rvalid_stall.sv
+	/home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/riscv_gnt_stall.sv
+	+firmware=/home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tests/custom/dhrystone/dhrystone.hex
+
+   User defined plus("+") options:
+	+firmware=/home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tests/custom/dhrystone/dhrystone.hex
+
+xrun: *N,CLEAN: Removing existing directory ./xcelium.d.
+Compiling UVM packages (uvm_pkg.sv cdns_uvm_pkg.sv) using uvmhome location /TOOLS/CADENCE/XCELIUMMAIN2009/tools/methodology/UVM/CDNS-1.2-ML
+file: cv32e40p/rtl/include/cv32e40p_apu_core_pkg.sv
+	package worklib.cv32e40p_apu_core_pkg:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/include/cv32e40p_fpu_pkg.sv
+	package worklib.cv32e40p_fpu_pkg:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/include/cv32e40p_pkg.sv
+	package worklib.cv32e40p_pkg:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/../bhv/include/cv32e40p_tracer_pkg.sv
+	package worklib.cv32e40p_tracer_pkg:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_if_stage.sv
+	module worklib.cv32e40p_if_stage:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_cs_registers.sv
+	module worklib.cv32e40p_cs_registers:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_register_file_ff.sv
+	module worklib.cv32e40p_register_file:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_load_store_unit.sv
+	module worklib.cv32e40p_load_store_unit:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_id_stage.sv
+	module worklib.cv32e40p_id_stage:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_aligner.sv
+	module worklib.cv32e40p_aligner:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_decoder.sv
+	module worklib.cv32e40p_decoder:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_compressed_decoder.sv
+	module worklib.cv32e40p_compressed_decoder:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_fifo.sv
+	module worklib.cv32e40p_fifo:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_prefetch_buffer.sv
+	module worklib.cv32e40p_prefetch_buffer:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_hwloop_regs.sv
+	module worklib.cv32e40p_hwloop_regs:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_mult.sv
+	module worklib.cv32e40p_mult:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_int_controller.sv
+	module worklib.cv32e40p_int_controller:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_ex_stage.sv
+	module worklib.cv32e40p_ex_stage:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_alu_div.sv
+	module worklib.cv32e40p_alu_div:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_alu.sv
+	module worklib.cv32e40p_alu:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_ff_one.sv
+	module worklib.cv32e40p_ff_one:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_popcnt.sv
+	module worklib.cv32e40p_popcnt:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_apu_disp.sv
+	module worklib.cv32e40p_apu_disp:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_controller.sv
+	module worklib.cv32e40p_controller:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_obi_interface.sv
+	module worklib.cv32e40p_obi_interface:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_prefetch_controller.sv
+	module worklib.cv32e40p_prefetch_controller:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_sleep_unit.sv
+	module worklib.cv32e40p_sleep_unit:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/cv32e40p_core.sv
+	module worklib.cv32e40p_core:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/../bhv/cv32e40p_sim_clock_gate.sv
+	module worklib.cv32e40p_clock_gate:sv
+		errors: 0, warnings: 0
+file: cv32e40p/rtl/../bhv/cv32e40p_wrapper.sv
+	module worklib.cv32e40p_core_log:sv
+		errors: 0, warnings: 0
+	module worklib.cv32e40p_apu_tracer:sv
+		errors: 0, warnings: 0
+	module worklib.cv32e40p_wrapper:sv
+		errors: 0, warnings: 0
+file: /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/include/perturbation_defines.sv
+	package worklib.perturbation_defines:sv
+		errors: 0, warnings: 0
+file: /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/tb_top.sv
+	module worklib.tb_top:sv
+		errors: 0, warnings: 0
+file: /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/cv32e40p_tb_wrapper.sv
+	module worklib.cv32e40p_tb_wrapper:sv
+		errors: 0, warnings: 0
+file: /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv
+	module worklib.mm_ram:sv
+		errors: 0, warnings: 0
+file: /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/dp_ram.sv
+	module worklib.dp_ram:sv
+		errors: 0, warnings: 0
+file: /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/riscv_random_stall.sv
+	module worklib.riscv_random_stall:sv
+		errors: 0, warnings: 0
+file: /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/riscv_random_interrupt_generator.sv
+	module worklib.riscv_random_interrupt_generator:sv
+		errors: 0, warnings: 0
+file: /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/riscv_rvalid_stall.sv
+	module worklib.riscv_rvalid_stall:sv
+		errors: 0, warnings: 0
+file: /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/tb_riscv/riscv_gnt_stall.sv
+	module worklib.riscv_gnt_stall:sv
+		errors: 0, warnings: 0
+xmvlog: *W,SPDUSD: Include directory cv32e40p/rtl/include given but not used.
+xmvlog: *W,SPDUSD: Include directory cv32e40p/rtl/../bhv/include given but not used.
+xmvlog: *W,SPDUSD: Include directory cv32e40p/rtl/../sva given but not used.
+	Total errors/warnings found outside modules and primitives:
+		errors: 0, warnings: 3
+	Elaborating the design hierarchy:
+		Caching library 'worklib' ....... Done
+    cv32e40p_core_i
+                  |
+xmelab: *W,CUVWSP (./cv32e40p/tb/core/cv32e40p_tb_wrapper.sv,96|18): 3 output ports were not connected:
+xmelab: (./cv32e40p/rtl/cv32e40p_core.sv,91): debug_havereset_o
+xmelab: (./cv32e40p/rtl/cv32e40p_core.sv,92): debug_running_o
+xmelab: (./cv32e40p/rtl/cv32e40p_core.sv,93): debug_halted_o
+
+    cv32e40p_core_i
+                  |
+xmelab: *W,CUVWSI (./cv32e40p/tb/core/cv32e40p_tb_wrapper.sv,96|18): 2 input ports were not connected:
+xmelab: (./cv32e40p/rtl/cv32e40p_core.sv,49): mtvec_addr_i
+xmelab: (./cv32e40p/rtl/cv32e40p_core.sv,52): dm_exception_addr_i
+
+	Top level design units:
+		perturbation_defines
+		$unit_0x77faf903
+		cv32e40p_pkg
+		cv32e40p_apu_core_pkg
+		cv32e40p_fpu_pkg
+		uvm_pkg
+		cdns_uvmapi
+		cdns_assert2uvm_pkg
+		cdns_uvm_pkg
+		tb_top
+xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+	Building instance overlay tables: .................... Done
+	Generating native compiled code:
+		worklib.riscv_gnt_stall:sv <0x0209e260>
+			streams:  12, words:  3767
+		worklib.riscv_rvalid_stall:sv <0x249c5934>
+			streams:  13, words:  6697
+		worklib.mm_ram:sv <0x4651f121>
+			streams:  99, words: 73000
+		worklib.cv32e40p_obi_interface:sv <0x7cd6f714>
+			streams:  12, words:  1704
+		worklib.cv32e40p_load_store_unit:sv <0x2a2614ac>
+			streams:  55, words: 23960
+		worklib.cv32e40p_mult:sv <0x154f0da2>
+			streams:  51, words: 24298
+		worklib.cv32e40p_ex_stage:sv <0x6a077c84>
+			streams:  38, words: 13854
+		worklib.cv32e40p_int_controller:sv <0x0bf758ae>
+			streams:  10, words:  6348
+		worklib.cv32e40p_controller:sv <0x7ba773bb>
+			streams:  44, words: 56724
+		worklib.cv32e40p_decoder:sv <0x23eed8cd>
+			streams:  15, words: 43082
+		worklib.cv32e40p_compressed_decoder:sv <0x6697043a>
+			streams:   6, words: 15405
+		worklib.cv32e40p_aligner:sv <0x1246b560>
+			streams:   8, words:  6699
+		worklib.cv32e40p_obi_interface:sv <0x642908df>
+			streams:  18, words:  4740
+		worklib.cv32e40p_fifo:sv <0x49d2e5eb>
+			streams:  12, words:  7335
+		worklib.cv32e40p_prefetch_controller:sv <0x25d07a44>
+			streams:  25, words:  7745
+		worklib.cv32e40p_prefetch_buffer:sv <0x56e839f6>
+			streams:  33, words:  7418
+		worklib.cv32e40p_if_stage:sv <0x2ee3b048>
+			streams:  32, words: 13585
+		worklib.cv32e40p_clock_gate:sv <0x5304545a>
+			streams:   3, words:   537
+		worklib.cv32e40p_sleep_unit:sv <0x6164349b>
+			streams:  11, words:  2645
+		worklib.cv32e40p_tb_wrapper:sv <0x46631775>
+			streams:  47, words:  9356
+		worklib.tb_top:sv <0x4ddb888f>
+			streams:  24, words: 18180
+		worklib.uvm_pkg:sv <0x7bd63958>
+			streams:   6, words:  2675
+		worklib.uvm_pkg:sv <0x1e567a39>
+			streams:   6, words:  2447
+		worklib.uvm_pkg:sv <0x47545ec5>
+			streams:   5, words:  2008
+		worklib.uvm_pkg:sv <0x72ca9224>
+			streams:  25, words: 14641
+		worklib.uvm_pkg:sv <0x2b67c79b>
+			streams:   7, words:  1511
+		worklib.uvm_pkg:sv <0x6d9ac696>
+			streams:  21, words: 42420
+		worklib.uvm_pkg:sv <0x3dba1009>
+			streams:   7, words:  1511
+		worklib.uvm_pkg:sv <0x51d25177>
+			streams:   7, words:  2522
+		worklib.uvm_pkg:sv <0x254dfbc4>
+			streams:   7, words:  2522
+		worklib.uvm_pkg:sv <0x2c8179da>
+			streams:  17, words: 13305
+		worklib.uvm_pkg:sv <0x494f4c68>
+			streams:   7, words:  2522
+		worklib.uvm_pkg:sv <0x7068cec9>
+			streams:  24, words: 17026
+		worklib.uvm_pkg:sv <0x48e81bda>
+			streams:  24, words: 16245
+		worklib.uvm_pkg:sv <0x4ee63d18>
+			streams:  20, words: 16127
+		worklib.uvm_pkg:sv <0x2974e089>
+			streams:  11, words:  3686
+		worklib.uvm_pkg:sv <0x1272f128>
+			streams:  23, words: 25169
+		worklib.uvm_pkg:sv <0x10a5ba75>
+			streams:   7, words:  1950
+		worklib.uvm_pkg:sv <0x1f4384bf>
+			streams:  12, words: 13564
+		worklib.uvm_pkg:sv <0x16688fd0>
+			streams:  23, words: 20740
+		worklib.uvm_pkg:sv <0x7dcfc4c7>
+			streams:  22, words: 43423
+		worklib.uvm_pkg:sv <0x796e3435>
+			streams:  25, words: 26852
+		worklib.uvm_pkg:sv <0x30430206>
+			streams:  24, words: 39097
+		worklib.uvm_pkg:sv <0x4139fa12>
+			streams:  25, words: 29161
+		worklib.uvm_pkg:sv <0x0a7bfed4>
+			streams:  23, words: 43515
+		worklib.uvm_pkg:sv <0x68b6fce3>
+			streams:  25, words: 30727
+		worklib.uvm_pkg:sv <0x6853ad13>
+			streams:  23, words: 48739
+		worklib.uvm_pkg:sv <0x0863f63c>
+			streams:  25, words: 33909
+		worklib.uvm_pkg:sv <0x1abcc4af>
+			streams:  23, words: 42878
+		worklib.uvm_pkg:sv <0x15909205>
+			streams:  23, words: 45060
+		worklib.uvm_pkg:sv <0x36464853>
+			streams:  25, words: 28351
+		worklib.uvm_pkg:sv <0x30863585>
+			streams:  23, words: 42184
+		worklib.uvm_pkg:sv <0x3624f524>
+			streams:  25, words: 65086
+		worklib.uvm_pkg:sv <0x184c7820>
+			streams:  54, words: 64540
+		worklib.cdns_uvm_pkg:sv <0x5b726973>
+			streams:   9, words:  3619
+		worklib.cdns_uvm_pkg:sv <0x68638fd7>
+			streams:  10, words:  7082
+		worklib.riscv_random_interrupt_generator:sv <0x4eba205e>
+			streams:  22, words: 17562
+		worklib.cdns_uvm_pkg:sv <0x23d1776c>
+			streams: 218, words: 316219
+		worklib.cdns_uvmapi:svp <0x7787db89>
+			streams:  27, words: 25747
+		worklib.cdns_assert2uvm_pkg:sv <0x6ec166fb>
+			streams:   3, words:  1899
+		worklib.uvm_pkg:sv <0x7dc8900e>
+			streams: 5186, words: 6582358
+		worklib.cv32e40p_core:sv <0x0cf7ba3a>
+			streams: 361, words: 77924
+		worklib.cv32e40p_register_file:sv <0x1d9bc91a>
+			streams:  15, words:  7018
+		worklib.cv32e40p_popcnt:sv <0x20c4dd43>
+			streams:   5, words:  2027
+		worklib.cv32e40p_ff_one:sv <0x21be76f1>
+			streams:  13, words: 11605
+		worklib.cv32e40p_alu_div:sv <0x1c37ed6b>
+			streams:  22, words:  9633
+		worklib.cv32e40p_alu:sv <0x176e1e4f>
+			streams: 130, words: 95235
+		worklib.cv32e40p_cs_registers:sv <0x6fa13712>
+			streams: 104, words: 68721
+		worklib.cv32e40p_id_stage:sv <0x78eac3bc>
+			streams: 297, words: 110939
+		worklib.cv32e40p_fpu_pkg:sv <0x1a3f90a5>
+			streams:   0, words:     0
+		worklib.dp_ram:sv <0x79ae7b53>
+			streams:  14, words:  9266
+	Building instance specific data structures.
+	Loading native compiled code:     .................... Done
+	Design hierarchy summary:
+		                       Instances  Unique
+		Modules:                      33      30
+		Verilog packages:              8       8
+		Registers:                 18241   12543
+		Scalar wires:               1278       -
+		Expanded wires:                7       1
+		Vectored wires:              910       -
+		Named events:                  5      12
+		Always blocks:               164     138
+		Initial blocks:              343     171
+		Parallel blocks:              27      28
+		Cont. assignments:          1065     529
+		Pseudo assignments:          703     703
+		Assertions:                    4       4
+		Sparse arrays:                 1       -
+		Compilation units:             1       1
+		SV Class declarations:       224     340
+		SV Class specializations:    430     430
+		Simulation timescale:        1ps
+	Writing initial simulation snapshot: worklib.tb_top:sv
+SVSEED default: 1
+xmsim: *W,RNDXCELON: A newer version of the SystemVerilog constraint solver is being used which has better support for array-solving, new solve-order mechanism, and seed stability enhancements..
+xmsim: *W,DSEM2009: This SystemVerilog design is simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
+
+-------------------------------------
+Relinquished control to SimVision...
+xcelium> 
+xcelium> source /TOOLS/CADENCE/XCELIUMMAIN2009/tools/xcelium/files/xmsimrc
+xcelium> source /TOOLS/CADENCE/XCELIUMMAIN2009/tools/methodology/UVM/CDNS-1.2-ML/additions/sv/files/tcl/uvm_sim.tcl
+xmsim: *E,TCLERR: /TOOLS/CADENCE/XCELIUMMAIN2009
+2024/10/16 16:12:28 WARNING This OS does not appear to be a Cadence supported Linux configuration.
+2024/10/16 16:12:28 For more info, please run CheckSysConf in <cdsRoot/tools.lnx86/bin/checkSysConf <productId>.
+    while executing
+"exec /TOOLS/CADENCE/XCELIUMMAIN2009/bin/sn_root"
+    invoked from within
+"sn_root"
+    (file "/TOOLS/CADENCE/XCELIUMMAIN2009/tools/methodology/UVM/CDNS-1.2-ML/additions/sv/files/tcl/uvm_sim.tcl" line 1)
+    invoked from within
+"source /TOOLS/CADENCE/XCELIUMMAIN2009/tools/methodology/UVM/CDNS-1.2-ML/additions/sv/files/tcl/uvm_sim.tcl"
+xcelium> run
+UVM_INFO /TOOLS/CADENCE/XCELIUMMAIN2009/tools/methodology/UVM/CDNS-1.2-ML/sv/src/base/uvm_root.svh(412) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+CDNS-UVM-1.2-ML (20.09-s001)
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+mem[0] = 6f
+mem[1] = 00
+mem[2] = 70
+mem[3] = 08
+mem[4] = 6f
+mem[5] = 00
+mem[6] = f0
+mem[7] = 04
+mem[8] = 6f
+mem[9] = 00
+mem[10] = b0
+mem[11] = 04
+mem[12] = 6f
+mem[13] = 00
+mem[14] = 50
+mem[15] = 05
+mem[16] = 6f
+mem[17] = 00
+mem[18] = 30
+mem[19] = 04
+mem[20] = 6f
+mem[21] = 00
+mem[22] = f0
+mem[23] = 03
+mem[24] = 6f
+mem[25] = 00
+mem[26] = b0
+mem[27] = 03
+mem[28] = 6f
+mem[29] = 00
+mem[30] = 70
+mem[31] = 04
+mem[32] = 6f
+mem[33] = 00
+mem[34] = 30
+mem[35] = 03
+mem[36] = 6f
+mem[37] = 00
+mem[38] = f0
+mem[39] = 02
+mem[40] = 6f
+mem[41] = 00
+mem[42] = b0
+mem[43] = 02
+mem[44] = 6f
+mem[45] = 00
+mem[46] = 90
+mem[47] = 03
+mem[48] = 6f
+mem[49] = 00
+mem[50] = 30
+mem[51] = 02
+mem[52] = 6f
+mem[53] = 00
+mem[54] = f0
+mem[55] = 01
+mem[56] = 6f
+mem[57] = 00
+mem[58] = b0
+mem[59] = 01
+mem[60] = 6f
+mem[61] = 00
+mem[62] = 70
+mem[63] = 01
+mem[64] = 6f
+mem[65] = 00
+mem[66] = 70
+mem[67] = 02
+mem[68] = 6f
+mem[69] = 00
+mem[70] = 50
+mem[71] = 02
+mem[72] = 6f
+mem[73] = 00
+mem[74] = 30
+mem[75] = 02
+mem[76] = 6f
+mem[77] = 00
+mem[78] = 10
+mem[79] = 02
+mem[80] = 6f
+mem[81] = 00
+mem[82] = f0
+mem[83] = 01
+mem[84] = 6f
+mem[85] = 00
+mem[86] = d0
+mem[87] = 01
+mem[88] = 6f
+mem[89] = 00
+mem[90] = b0
+mem[91] = 01
+mem[92] = 6f
+mem[93] = 00
+mem[94] = 90
+mem[95] = 01
+mem[96] = 6f
+mem[97] = 00
+mem[98] = 70
+mem[99] = 01
+mem[100] = 6f
+mem[101] = 00
+UVM_INFO /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv(274) @ 0ns: reporter [RNDSTALL] INSTR OBI stall enable: 0
+UVM_INFO /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv(275) @ 0ns: reporter [RNDSTALL] INSTR OBI stall mode:   0
+UVM_INFO /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv(276) @ 0ns: reporter [RNDSTALL] INSTR OBI stall gnt:    0
+UVM_INFO /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv(277) @ 0ns: reporter [RNDSTALL] INSTR OBI stall valid:  0
+UVM_INFO /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv(278) @ 0ns: reporter [RNDSTALL] INSTR OBI stall max:    0
+UVM_INFO /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv(279) @ 0ns: reporter [RNDSTALL] DATA  OBI stall enable: 1
+UVM_INFO /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv(280) @ 0ns: reporter [RNDSTALL] DATA  OBI stall mode:   2
+UVM_INFO /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv(281) @ 0ns: reporter [RNDSTALL] DATA  OBI stall gnt:    1
+UVM_INFO /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv(282) @ 0ns: reporter [RNDSTALL] DATA  OBI stall valid:  0
+UVM_INFO /home/kbkang/RISC-V_Testbench_CV32e40p/Original_CV32e40p_Testbench/cv32e40p/tb/core/mm_ram.sv(283) @ 0ns: reporter [RNDSTALL] DATA  OBI stall max:    2
+
+Dhrystone Benchmark, Version 2.1 (Language: C)
+
+Program compiled without 'register' attribute
+
+Please give the number of runs through the benchmark: 
+Execution starts, 100 runs through Dhrystone
+>>>start time : 191760
+
+Simulation interrupted at 1173690100 PS + 2
+xcelium> ^C
+xcelium> exit
+TOOL:	xrun	20.09-s001: Exiting on Oct 16, 2024 at 16:15:33 KST  (total: 00:03:15)

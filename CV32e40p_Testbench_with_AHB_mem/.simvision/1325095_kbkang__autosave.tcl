@@ -1,0 +1,50 @@
+
+# XM-Sim Command File
+# TOOL:	xmsim	20.09-s001
+#
+
+set tcl_prompt1 {puts -nonewline "xcelium> "}
+set tcl_prompt2 {puts -nonewline "> "}
+set vlog_format %h
+set vhdl_format %v
+set real_precision 6
+set display_unit auto
+set time_unit module
+set heap_garbage_size -200
+set heap_garbage_time 0
+set assert_report_level note
+set assert_stop_level error
+set autoscope yes
+set assert_1164_warnings yes
+set pack_assert_off {}
+set severity_pack_assert_off {note warning}
+set assert_output_stop_level failed
+set tcl_debug_level 0
+set relax_path_name 1
+set vhdl_vcdmap XX01ZX01X
+set intovf_severity_level ERROR
+set probe_screen_format 0
+set rangecnst_severity_level ERROR
+set textio_severity_level ERROR
+set vital_timing_checks_on 1
+set vlog_code_show_force 0
+set assert_count_attempts 1
+set tcl_all64 false
+set tcl_runerror_exit false
+set assert_report_incompletes 0
+set show_force 1
+set force_reset_by_reinvoke 0
+set tcl_relaxed_literal 0
+set probe_exclude_patterns {}
+set probe_packed_limit 4k
+set probe_unpacked_limit 16k
+set assert_internal_msg no
+set svseed 1
+set assert_reporting_mode 0
+set vcd_compact_mode 0
+alias . run
+alias quit exit
+database -open -shm -into waves.shm waves -default
+probe -create -database waves top_m2s1.cv32e40p_tb_wrapper_i.M_HADDR0 top_m2s1.cv32e40p_tb_wrapper_i.M_HADDR1 top_m2s1.cv32e40p_tb_wrapper_i.M_HBURST0 top_m2s1.cv32e40p_tb_wrapper_i.M_HBURST1 top_m2s1.cv32e40p_tb_wrapper_i.M_HBUSREQ0 top_m2s1.cv32e40p_tb_wrapper_i.M_HBUSREQ1 top_m2s1.cv32e40p_tb_wrapper_i.M_HGRANT top_m2s1.cv32e40p_tb_wrapper_i.M_HLOCK0 top_m2s1.cv32e40p_tb_wrapper_i.M_HLOCK1 top_m2s1.cv32e40p_tb_wrapper_i.M_HPROT0 top_m2s1.cv32e40p_tb_wrapper_i.M_HPROT1 top_m2s1.cv32e40p_tb_wrapper_i.M_HRDATA0 top_m2s1.cv32e40p_tb_wrapper_i.M_HRDATA1 top_m2s1.cv32e40p_tb_wrapper_i.M_HREADY0 top_m2s1.cv32e40p_tb_wrapper_i.M_HREADY1 top_m2s1.cv32e40p_tb_wrapper_i.M_HRESP0 top_m2s1.cv32e40p_tb_wrapper_i.M_HRESP1 top_m2s1.cv32e40p_tb_wrapper_i.M_HSIZE0 top_m2s1.cv32e40p_tb_wrapper_i.M_HSIZE1 top_m2s1.cv32e40p_tb_wrapper_i.M_HTRANS0 top_m2s1.cv32e40p_tb_wrapper_i.M_HTRANS1 top_m2s1.cv32e40p_tb_wrapper_i.M_HWDATA0 top_m2s1.cv32e40p_tb_wrapper_i.M_HWDATA1 top_m2s1.cv32e40p_tb_wrapper_i.M_HWRITE0 top_m2s1.cv32e40p_tb_wrapper_i.M_HWRITE1 top_m2s1.cv32e40p_tb_wrapper_i.S_HADDR top_m2s1.cv32e40p_tb_wrapper_i.S_HBURST top_m2s1.cv32e40p_tb_wrapper_i.S_HMASTER top_m2s1.cv32e40p_tb_wrapper_i.S_HMASTLOCK top_m2s1.cv32e40p_tb_wrapper_i.S_HPROT top_m2s1.cv32e40p_tb_wrapper_i.S_HRDATA0 top_m2s1.cv32e40p_tb_wrapper_i.S_HREADY top_m2s1.cv32e40p_tb_wrapper_i.S_HREADYout0 top_m2s1.cv32e40p_tb_wrapper_i.S_HREADYout1 top_m2s1.cv32e40p_tb_wrapper_i.S_HRESP0 top_m2s1.cv32e40p_tb_wrapper_i.S_HSEL top_m2s1.cv32e40p_tb_wrapper_i.S_HSEL0 top_m2s1.cv32e40p_tb_wrapper_i.S_HSEL1 top_m2s1.cv32e40p_tb_wrapper_i.S_HSIZE top_m2s1.cv32e40p_tb_wrapper_i.S_HSPLIT0 top_m2s1.cv32e40p_tb_wrapper_i.S_HTRANS top_m2s1.cv32e40p_tb_wrapper_i.S_HWDATA top_m2s1.cv32e40p_tb_wrapper_i.S_HWRITE top_m2s1.cv32e40p_tb_wrapper_i.clk_i top_m2s1.cv32e40p_tb_wrapper_i.core_sleep_o top_m2s1.cv32e40p_tb_wrapper_i.data_addr top_m2s1.cv32e40p_tb_wrapper_i.data_be top_m2s1.cv32e40p_tb_wrapper_i.data_err top_m2s1.cv32e40p_tb_wrapper_i.data_gnt top_m2s1.cv32e40p_tb_wrapper_i.data_rdata top_m2s1.cv32e40p_tb_wrapper_i.data_req top_m2s1.cv32e40p_tb_wrapper_i.data_rvalid top_m2s1.cv32e40p_tb_wrapper_i.data_wdata top_m2s1.cv32e40p_tb_wrapper_i.data_we top_m2s1.cv32e40p_tb_wrapper_i.debug_req top_m2s1.cv32e40p_tb_wrapper_i.exit_valid_o top_m2s1.cv32e40p_tb_wrapper_i.exit_value_o top_m2s1.cv32e40p_tb_wrapper_i.fetch_enable_i top_m2s1.cv32e40p_tb_wrapper_i.instr_addr top_m2s1.cv32e40p_tb_wrapper_i.instr_err top_m2s1.cv32e40p_tb_wrapper_i.instr_gnt top_m2s1.cv32e40p_tb_wrapper_i.instr_rdata top_m2s1.cv32e40p_tb_wrapper_i.instr_req top_m2s1.cv32e40p_tb_wrapper_i.instr_rvalid top_m2s1.cv32e40p_tb_wrapper_i.irq top_m2s1.cv32e40p_tb_wrapper_i.irq_ack top_m2s1.cv32e40p_tb_wrapper_i.irq_id_in top_m2s1.cv32e40p_tb_wrapper_i.irq_id_out top_m2s1.cv32e40p_tb_wrapper_i.irq_sec top_m2s1.cv32e40p_tb_wrapper_i.pending_dbus_xfer_d top_m2s1.cv32e40p_tb_wrapper_i.pending_dbus_xfer_i top_m2s1.cv32e40p_tb_wrapper_i.rst_ni top_m2s1.cv32e40p_tb_wrapper_i.tests_failed_o top_m2s1.cv32e40p_tb_wrapper_i.tests_passed_o
+
+simvision -input /home/kbkang/RISC-V_Testbench_CV32e40p/CV32e40p_Testbench_with_AHB_mem/.simvision/1325095_kbkang__autosave.tcl.svcf

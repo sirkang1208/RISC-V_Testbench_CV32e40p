@@ -77,6 +77,13 @@ module tb_top
         end
     end
 
+    integer i;
+    initial begin
+       for(i = 0; i < 100+2;i=i+1) begin
+          $display("mem[%0d] = %h", i, cv32e40p_tb_wrapper_i.ram_i.dp_ram_i.mem[i]);
+       end
+    end
+
     initial begin: clock_gen
         forever begin
             #CLK_PHASE_HI core_clk = 1'b0;
