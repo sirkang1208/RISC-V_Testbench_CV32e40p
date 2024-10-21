@@ -57,7 +57,6 @@ module obi2ahbm_adapter_data (
     parameter AHB_FSM_WAIT        =  2'b00;
     parameter AHB_FSM_DATA        =  2'b10; 
 
-
     // ********** //
     // Wires/Regs //
     // ********** //
@@ -98,10 +97,6 @@ module obi2ahbm_adapter_data (
     
     // The valid signal should only assert when transitioning to the DATA state
     assign data_rvalid_o =  ahb_fsm_reg == AHB_FSM_DATA ? hready_i : 1'b0;
-
-    // should not change the below codes
-    // can easily make errors
-
 
     // ************* //
     // Clocked Logic //

@@ -26,35 +26,13 @@ module top_m2s1
    reg         HRESETn= 1'b0; 
    
    always #(CLK_PERIOD_HALF) HCLK=~HCLK;
-   initial #155 HRESETn=1'b1;
+   
 
    reg  [31:0]          mem[0:1024*256-1];
 
    //---------------------------------------------------------------------------
    logic trap;
 
-   // logic          trans_valid;
-   // logic          trans_ready;
-   // logic [31:0]   trans_addr;
-   // logic          trans_we;
-   // logic [3:0]    trans_be;
-   // logic [31:0]   trans_wdata;
-   // logic [5:0]    trans_atop;
-
-   // logic          resp_valid;
-   // logic [31:0]   resp_rdata;
-   // logic          resp_err;  // Unused for now
-
-   // logic          obi_req_o;
-   // logic          obi_gnt_i;
-   // logic [31:0]   obi_addr_o;
-   // logic          obi_we_o;
-   // logic [3:0]    obi_be_o;
-   // logic [31:0]   obi_wdata_o;
-   // logic [5:0]    obi_atop_o;   // Not (yet) defined in OBI 1.0 spec
-   // logic [31:0]   obi_rdata_i;
-   // logic          obi_rvalid_i;
-   // logic          obi_err_i;     // External bus error (validity defined by obi_rvalid_i)
 
 
 
@@ -91,37 +69,6 @@ module top_m2s1
       .exit_value_o   ( exit_value   )
    );
 	
-   //---------------------------------------------------------------------------
-   initial begin
-      `ifdef VCD
-          // use +define+VCD in 'vlog'
-          $dumpfile("wave.vcd");
-          $dumpvars(0);
-      `else
-           // use +VCD in 'vsim'
-           if ($test$plusargs("VCD")) begin
-               $dumpfile("wave.vcd");
-               $dumpvars(5);
-           end
-      `endif
-   end
-   //---------------------------------------------------------------------------
-	integer trace_file;
-
-	initial begin
-		if ($test$plusargs("trace")) begin
-			trace_file = $fopen("testbench.trace", "w");
-			repeat (10) @(posedge HCLK);
-			while (!trap) begin
-				@(posedge HCLK);
-				if (trace_valid)
-					$fwrite(trace_file, "%x\n", trace_data);
-			end
-			$fclose(trace_file);
-			$display("Finished writing testbench.trace.");
-		end
-	end
-
    // we either load the provided firmware or execute a small test program that
    // doesn't do more than an infinite loop with some I/O
    initial begin: load_prog
@@ -145,21 +92,21 @@ module top_m2s1
          $display("mem[%0d] = %h", i, mem[i]);
       end
    end
-   // we either load the provided firmware or execute a small test program that
-   // doesn't do more than an infinite loop with some I/O
-   // initial begin: load_prog_sub
-   //    automatic string firmware;
-   //    automatic int prog_size = 6;
 
-   //    if($value$plusargs("firmware=%s", firmware)) begin
-   //        if($test$plusargs("verbose"))
-   //            $display("[TESTBENCH] @ t=%0t: loading firmware %0s",
-   //                     $time, firmware);
-   //        $readmemh(firmware, cv32e40p_tb_wrapper_i.u_sub_mem_ahb.mem);
-   //    end else begin
-   //        $display("No firmware specified");
-   //        $finish;
-   //    end
-   // end
+
+       // timing format, reset generation and parameter check
+   initial begin
+      $timeformat(-9, 0, "ns", 9);
+      HRESETn = 1'b0;
+
+      #40 HRESETn=1'b1;
+
+      repeat (3) @(negedge HCLK);
+      HRESETn = 1'b1;
+
+      if ( !( (INSTR_RDATA_WIDTH == 128) || (INSTR_RDATA_WIDTH == 32) ) ) begin
+       $fatal(2, "invalid INSTR_RDATA_WIDTH, choose 32 or 128");
+      end
+  end
 
 endmodule

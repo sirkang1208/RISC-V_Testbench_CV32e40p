@@ -170,7 +170,7 @@ xrun-custom:
 	@echo "                             Example:   'make xrun-test TEST=fibonacci'"
 
 .PHONY: xrun-test 
-xrun-test: xrun-all # $(TEST_PROGRAM_PATH)/$(TEST).hex modif
+xrun-test: xrun-all $(TEST_PROGRAM_PATH)/$(TEST).hex 
 	$(XRUN) \
 		$(XRUN_FLAGS) \
 		-f $(CV_CORE_MANIFEST) \

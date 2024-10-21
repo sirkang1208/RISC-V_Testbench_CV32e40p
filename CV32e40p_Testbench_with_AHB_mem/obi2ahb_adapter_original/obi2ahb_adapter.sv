@@ -166,11 +166,6 @@ module obi2ahbm_adapter (
            // Idles until data_gnt_o is received
            // Once data_gnt_o is received, this is the address phase of AHB
            // and all ahb signals are fed through from the core
-           $display("AHB_FSM_WAIT_logic_change");
-           $display("ahb_fsm_reg : %b", ahb_fsm_reg);
-           $display("data_addr_i : %b", data_addr_i);
-           $display("haddr_o : %b", haddr_o);
-           $display("data_gnt_o : %b", data_gnt_o);
 
            if (data_gnt_o) begin
              // lint_checking TIELOG off
@@ -184,11 +179,8 @@ module obi2ahbm_adapter (
              // through from the core to the corresponding AHB signals. For 
              // htrans_o, if data_gnt_o is given, the ahb is in address phase,
              // and the transaction is non-sequential (1'b10).
-             $display("data_gnt_o = 1");
              haddr_o = data_addr_i;
-             $display("data_addr_i : %b", data_addr_i);
-             $display("haddr_o : %b", haddr_o);
-             
+
              hwrite_o = data_we_i;
  
              // lint_checking TIELOG off
@@ -211,11 +203,6 @@ module obi2ahbm_adapter (
          AHB_FSM_DATA: begin
            // DATA phase
            // read data is fed through from the core
-          $display("AHB_FSM_DATA_logic_change");
-          $display("ahb_fsm_reg : %b", ahb_fsm_reg);
-          $display("data_addr_i : %b", data_addr_i);
-          $display("haddr_o : %b", haddr_o);
-          $display("data_gnt_o : %b", data_gnt_o);
            data_rdata_o = hrdata_i;
  
            // If data_gnt_o is also given during the data phase, then it is also
@@ -232,10 +219,7 @@ module obi2ahbm_adapter (
              // through from the core to the corresponding AHB signals. For 
              // htrans_o, if data_gnt_o is given, the ahb is in address phase,
              // and the transaction is non-sequential (1'b10).             
-             $display("data_gnt_o = 1");
              haddr_o = data_addr_i;
-             $display("data_addr_i : %b", data_addr_i);
-             $display("haddr_o : %b", haddr_o);
 
              hwrite_o = data_we_i;
  
@@ -257,14 +241,8 @@ module obi2ahbm_adapter (
            end
          end
          default: begin
-          $display("Default_logic_change");
-          $display("ahb_fsm_reg : %b", ahb_fsm_reg);
-          $display("data_addr_i : %b", data_addr_i);
-          $display("haddr_o : %b", haddr_o);
            hprot_o = {HPROT_NONCACHEABLE, HPROT_NONBUFFERABLE, priv_mode_i, HPROT_DATAACCESS};
            haddr_o = data_addr_i;
-           $display("data_addr_i : %b", data_addr_i);
-           $display("haddr_o : %b", haddr_o);
            hwrite_o = data_we_i;
            htrans_o = 2'b00;
            hsize_o = {TIE_LO,TIE_LO,TIE_LO};
@@ -281,10 +259,7 @@ module obi2ahbm_adapter (
        // IDLE/ADDRESS phase 
        // Waits until "ADDRESS Phase" occurs during data_gnt_o
        AHB_FSM_WAIT: begin
-          $display("AHB_FSM_WAIT_reg_state_change");
-          $display("data_gnt_o : %b", data_gnt_o);
          if (data_gnt_o) begin
-          $display("ahb_fsm_reg : %b", ahb_fsm_reg);
            ahb_fsm_reg_nxt = AHB_FSM_DATA;
          end
        end
@@ -293,20 +268,15 @@ module obi2ahbm_adapter (
        // If data_gnt_o it is also the ADDRESS phase for the next set of data so it stays
        // in the data phase on the next cycle
        AHB_FSM_DATA: begin
-        $display("AHB_FSM_DATA_reg_state_change");
-        $display("data_gnt_o : %b", data_gnt_o);
          if (data_rvalid_o) begin
            if (data_gnt_o) begin
-            $display("ahb_fsm_reg : %b", ahb_fsm_reg);
             ahb_fsm_reg_nxt = AHB_FSM_DATA;
            end else begin
-            $display("ahb_fsm_reg : %b", ahb_fsm_reg);
             ahb_fsm_reg_nxt = AHB_FSM_WAIT;
            end
          end
        end
          default: begin
-          $display("Default_reg_state_change");
            ahb_fsm_reg_nxt = ahb_fsm_reg;
          end
      endcase

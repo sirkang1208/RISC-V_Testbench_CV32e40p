@@ -67,8 +67,8 @@ module cv32e40p_tb_wrapper
     logic [31:0]        `BUS_DELAY M_HWDATA1 ;
     logic [31:0]        `BUS_DELAY M_HRDATA0  ;
     logic [ 1:0]        `BUS_DELAY M_HRESP0   ;
-    logic               `BUS_DELAY M_HREADY0  ;  //1
-    logic [31:0]        `BUS_DELAY M_HRDATA1  ;
+    logic               `BUS_DELAY M_HREADY0 ;  //1
+    logic [31:0]        `BUS_DELAY M_HRDATA1 ;
     logic [ 1:0]        `BUS_DELAY M_HRESP1   ;
     logic               `BUS_DELAY M_HREADY1  ;  //1
     //---------------------------------------------------------------------------
@@ -126,6 +126,8 @@ module cv32e40p_tb_wrapper
 
     // interrupts (only timer for now)
     assign irq_sec     = '0;
+    assign M_HREADY0 = data_req;
+    assign M_HREADY1 = M_HREADY0 == 1'b0 ? 1'b1 : 1'b0;   
 
     // instantiate the core
     cv32e40p_core #(
@@ -197,7 +199,7 @@ module cv32e40p_tb_wrapper
         .hwdata_o      (M_HWDATA0   ),       // (O) 32-bit AHB write data bus
         .hwrite_o      (M_HWRITE0   ),       // (O) Transfer direction
         .hrdata_i      (M_HRDATA0    ),       // (I) 32-bit AHB read data bus
-        .hready_i      (M_HREADY0    ),       // (I) Status of transfer
+        .hready_i      (M_HREADY0   ),       // (I) Status of transfer
         .hresp_i       (M_HRESP0    ),        // (I) Transfer response
         //bus request signal added for arbiter
 
@@ -234,21 +236,21 @@ module cv32e40p_tb_wrapper
         .hwdata_o      (M_HWDATA1   ),       // (O) 32-bit AHB write data bus
         .hwrite_o      (M_HWRITE1   ),       // (O) Transfer direction
         .hrdata_i      (M_HRDATA1    ),       // (I) 32-bit AHB read data bus
-        .hready_i      (M_HREADY1    ),       // (I) Status of transfer
+        .hready_i      (M_HREADY1     ),       // (I) Status of transfer
         .hresp_i       (M_HRESP1     ),        // (I) Transfer response
         //bus request signal added for arbiter
     //found that it doesn't need tied signal
 
     // Data interface from core
-        .data_req_i    (instr_req),     // (I) Request ready
-        .data_gnt_o    (instr_gnt),     // (O) The other side accepted the request
-        .data_addr_i   (instr_addr),    // (I) Address
-        .data_we_i     ('0),      // (I) Write enable (active HIGH)
-        .data_be_i     (4'b1111),      // (I) Byte enable
-        .data_wdata_i  ('0),   // (I) Write data
-        .data_rdata_o  (instr_rdata),   // (O) Read data
-        .data_rvalid_o (instr_rvalid),  // (O) Read data valid when high
-        .data_err_o    (instr_err),     // (O) Error
+        .instr_req_i    (instr_req),     // (I) Request ready
+        .instr_gnt_o    (instr_gnt),     // (O) The other side accepted the request
+        .instr_addr_i   (instr_addr),    // (I) Address
+        .instr_we_i     ('0),            // (I) Write enable (active HIGH)
+        .instr_be_i     (4'b1111),       // (I) Byte enable
+        .instr_wdata_i  ('0),            // (I) Write data
+        .instr_rdata_o  (instr_rdata),   // (O) Read data
+        .instr_rvalid_o (instr_rvalid),  // (O) Read data valid when high
+        .instr_err_o    (instr_err),     // (O) Error
         .pending_dbus_xfer_i(pending_dbus_xfer_i), // (I) Asserted if data bus is busy from other transactions
 
     // Miscellaneous
@@ -268,14 +270,14 @@ module cv32e40p_tb_wrapper
         , .HSIZE     (M_HSIZE0  )
         , .HBURST    (M_HBURST0 )
         , .HWDATA    (M_HWDATA0 )
-        , .HSEL      (S_HSEL0       )
+        , .HSEL      (1'b1      )
         , .HRDATA    (M_HRDATA0     )
         , .HRESP     (M_HRESP0      )
         , .HREADYin  (M_HREADY0      )
         , .HREADYout (S_HREADYout0  )
     );
     //---------------------------------------------------------------------------
-    mem_ahb #(.P_SLV_ID(0)
+    mem_ahb #(.P_SLV_ID(1)
         ,.P_SIZE_IN_BYTES(`SIZE_IN_BYTES)
         ,.P_DELAY(`MEM_DELAY)
     ) u_mem_ahb_inst (
@@ -287,10 +289,10 @@ module cv32e40p_tb_wrapper
         , .HSIZE     (M_HSIZE1  )
         , .HBURST    (M_HBURST1 )
         , .HWDATA    (M_HWDATA1 )
-        , .HSEL      (S_HSEL1       )
+        , .HSEL      (1'b1      )
         , .HRDATA    (M_HRDATA1     )
         , .HRESP     (M_HRESP1      )
-        , .HREADYin  (M_HREADY1      )
+        , .HREADYin  (M_HREADY1     )
         , .HREADYout (S_HREADYout1  )
     );
 
