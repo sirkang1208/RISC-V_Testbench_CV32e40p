@@ -126,8 +126,6 @@ module cv32e40p_tb_wrapper
 
     // interrupts (only timer for now)
     assign irq_sec     = '0;
-    assign M_HREADY0 = data_req;
-    assign M_HREADY1 = M_HREADY0 == 1'b0 ? 1'b1 : 1'b0;   
 
     // instantiate the core
     cv32e40p_core #(
@@ -294,6 +292,11 @@ module cv32e40p_tb_wrapper
         , .HRESP     (M_HRESP1      )
         , .HREADYin  (M_HREADY1     )
         , .HREADYout (S_HREADYout1  )
-    );
+    );    
+
+    assign M_HREADY0 = data_req;
+    // assign hready_i = instr_req;
+    assign M_HREADY1 = M_HREADY0 == 1'b0 ? 1'b1 : 1'b0;
+
 
 endmodule // cv32e40p_tb_wrapper

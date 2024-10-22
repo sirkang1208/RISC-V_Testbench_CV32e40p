@@ -89,7 +89,7 @@ module obi2ahbm_adapter_data (
     // hmastlock_o is not used, so it is tied low
     assign hmastlock_o   =  TIE_LO;
     // lint_checking TIELOG on
-        
+
     // A grant should only happen on a request, and if the AHB side is ready
     // to respond. Don't initiate an AHB xfer if the data bus is busy from
     // other pending xfers

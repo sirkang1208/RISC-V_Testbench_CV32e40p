@@ -1,0 +1,111 @@
+*** Message Type: info ***
+When: Mon Oct 21 04:20:45 PM KST 2024
+SimVision started.
+Version: TOOL:  simvision       20.09-s001
+User: kbkang
+Host: eagle
+Platform: Linux/x86_64/5.15.0-119-generic
+Started: Mon Oct 21 04:20:45 PM KST 2024
+Command: /TOOLS/CADENCE/XCELIUMMAIN2009/tools.lnx86/simvision/bin/simvision.exe -connect dc:eagle:54331 -nocopyright
+Work Directory: /home/kbkang/RISC-V_Testbench_CV32e40p/CV32e40p_Testbench_with_AHB_mem
+ 
+*** Message Type: info ***
+When: Mon Oct 21 04:20:46 PM KST 2024
+Create browser window: "Design Browser 1"
+ 
+*** Message Type: info ***
+When: Mon Oct 21 04:20:47 PM KST 2024
+Create console window: "Console"
+ 
+*** Message Type: info ***
+When: Mon Oct 21 04:20:50 PM KST 2024
+Connect to Simulator
+      Design: worklib.top_m2s1:sv
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:        xmsim   20.09-s001
+        User: kbkang
+        Host: eagle
+Time Started: Mon Oct 21 04:20:43 PM KST 2024
+  Process ID: 1425300
+   Directory: /home/kbkang/RISC-V_Testbench_CV32e40p/CV32e40p_Testbench_with_AHB_mem
+     Command: xrun -access +rwc -gui -clean -smartorder -sv -top worklib.top_m2s1 -timescale 1ns/1ps +define+CV32E40P_APU_TRACE -uvmhome CDNS-1.2-ML -f cv32e40p_manifest.flist cv32e40p/tb/perturbation_defines.sv cv32e40p/tb/top_m2s1.sv cv32e40p/tb/cv32e40p_tb_wrapper.sv cv32e40p/tb/sim_define.v cv32e40p/tb/mem_ahb.v cv32e40p/tb/riscv_random_stall.sv cv32e40p/tb/riscv_random_interrupt_generator.sv cv32e40p/tb/riscv_rvalid_stall.sv cv32e40p/tb/riscv_gnt_stall.sv +firmware=/home/kbkang/RISC-V_Testbench_CV32e40p/CV32e40p_Testbench_with_AHB_mem/dhrystone.hex
+
+ 
+*** Message Type: info ***
+When: Mon Oct 21 04:20:51 PM KST 2024
+Create utility window: "Properties"
+ 
+*** Message Type: info ***
+When: Mon Oct 21 04:25:54 PM KST 2024
+Create waveform window: "Waveform 1"
+ 
+*** Message Type: info ***
+When: Tue Oct 22 02:59:51 PM KST 2024
+Delete browser window: "Design Browser 1"
+ 
+*** Message Type: info ***
+When: Tue Oct 22 03:01:13 PM KST 2024
+Exit XM-Sim: user
+      Design: worklib.top_m2s1:sv
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:        xmsim   20.09-s001
+        User: kbkang
+        Host: eagle
+Time Started: Mon Oct 21 04:20:43 PM KST 2024
+  Process ID: 1425300
+   Directory: /home/kbkang/RISC-V_Testbench_CV32e40p/CV32e40p_Testbench_with_AHB_mem
+     Command: xrun -access +rwc -gui -clean -smartorder -sv -top worklib.top_m2s1 -timescale 1ns/1ps +define+CV32E40P_APU_TRACE -uvmhome CDNS-1.2-ML -f cv32e40p_manifest.flist cv32e40p/tb/perturbation_defines.sv cv32e40p/tb/top_m2s1.sv cv32e40p/tb/cv32e40p_tb_wrapper.sv cv32e40p/tb/sim_define.v cv32e40p/tb/mem_ahb.v cv32e40p/tb/riscv_random_stall.sv cv32e40p/tb/riscv_random_interrupt_generator.sv cv32e40p/tb/riscv_rvalid_stall.sv cv32e40p/tb/riscv_gnt_stall.sv +firmware=/home/kbkang/RISC-V_Testbench_CV32e40p/CV32e40p_Testbench_with_AHB_mem/dhrystone.hex
+
+ 
+*** Message Type: error ***
+When: Tue Oct 22 03:01:14 PM KST 2024
+XM-Sim Crashed:
+      Design: worklib.top_m2s1:sv
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:        xmsim   20.09-s001
+        User: kbkang
+        Host: eagle
+Time Started: Mon Oct 21 04:20:43 PM KST 2024
+  Process ID: 1425300
+   Directory: /home/kbkang/RISC-V_Testbench_CV32e40p/CV32e40p_Testbench_with_AHB_mem
+     Command: xrun -access +rwc -gui -clean -smartorder -sv -top worklib.top_m2s1 -timescale 1ns/1ps +define+CV32E40P_APU_TRACE -uvmhome CDNS-1.2-ML -f cv32e40p_manifest.flist cv32e40p/tb/perturbation_defines.sv cv32e40p/tb/top_m2s1.sv cv32e40p/tb/cv32e40p_tb_wrapper.sv cv32e40p/tb/sim_define.v cv32e40p/tb/mem_ahb.v cv32e40p/tb/riscv_random_stall.sv cv32e40p/tb/riscv_random_interrupt_generator.sv cv32e40p/tb/riscv_rvalid_stall.sv cv32e40p/tb/riscv_gnt_stall.sv +firmware=/home/kbkang/RISC-V_Testbench_CV32e40p/CV32e40p_Testbench_with_AHB_mem/dhrystone.hex
+      Design: worklib.top_m2s1:sv
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:   xmsim   20.09-s001
+        User: kbkang
+        Host: eagle
+Time Started: Mon Oct 21 04:20:43 PM KST 2024
+  Process ID: 1425300
+   Directory: /home/kbkang/RISC-V_Testbench_CV32e40p/CV32e40p_Testbench_with_AHB_mem
+     Command: xrun -access +rwc -gui -clean -smartorder -sv -top worklib.top_m2s1 -timescale 1ns/1ps +define+CV32E40P_APU_TRACE -uvmhome CDNS-1.2-ML -f cv32e40p_manifest.flist cv32e40p/tb/perturbation_defines.sv cv32e40p/tb/top_m2s1.sv cv32e40p/tb/cv32e40p_tb_wrapper.sv cv32e40p/tb/sim_define.v cv32e40p/tb/mem_ahb.v cv32e40p/tb/riscv_random_stall.sv cv32e40p/tb/riscv_random_interrupt_generator.sv cv32e40p/tb/riscv_rvalid_stall.sv cv32e40p/tb/riscv_gnt_stall.sv +firmware=/home/kbkang/RISC-V_Testbench_CV32e40p/CV32e40p_Testbench_with_AHB_mem/dhrystone.hex
+
+Outstanding STRAP Requests:
+        strap::report enable out
+ 
+*** Message Type: info ***
+When: Tue Oct 22 03:01:17 PM KST 2024
+Recall Simulator
+ 
+*** Message Type: info ***
+When: Tue Oct 22 03:01:24 PM KST 2024
+Connect to Simulator
+      Design: worklib.top_m2s1:sv
+   Languages: verilog
+   Simulator: XM-Sim
+     Version: TOOL:        xmsim   20.09-s001
+        User: kbkang
+        Host: eagle
+Time Started: Tue Oct 22 03:01:21 PM KST 2024
+  Process ID: 1440463
+   Directory: /home/kbkang/RISC-V_Testbench_CV32e40p/CV32e40p_Testbench_with_AHB_mem
+     Command: xrun -access +rwc -clean -smartorder -sv -top worklib.top_m2s1 -timescale 1ns/1ps +define+CV32E40P_APU_TRACE -uvmhome CDNS-1.2-ML -f cv32e40p_manifest.flist cv32e40p/tb/perturbation_defines.sv cv32e40p/tb/top_m2s1.sv cv32e40p/tb/cv32e40p_tb_wrapper.sv cv32e40p/tb/sim_define.v cv32e40p/tb/mem_ahb.v cv32e40p/tb/riscv_random_stall.sv cv32e40p/tb/riscv_random_interrupt_generator.sv cv32e40p/tb/riscv_rvalid_stall.sv cv32e40p/tb/riscv_gnt_stall.sv +firmware=/home/kbkang/RISC-V_Testbench_CV32e40p/CV32e40p_Testbench_with_AHB_mem/dhrystone.hex -tcl -nolog -nocopyright -neverwarn
+
+ 
+*** Message Type: info ***
+When: Tue Oct 22 03:01:24 PM KST 2024
+SimVision Exit.
+ 
