@@ -301,7 +301,7 @@ clean-test-programs:
 	find $(CORE_V_VERIF)/$(CV_CORE_LC)/tests/ -name corev_*.S -exec rm {} \;
 
 .PHONY: clean clean_all distclean
-clean: clean-sim-results verilate-clean firmware-clean xrun-clean clean-test-programs
+clean: clean-sim-results verilate-clean firmware-clean xrun-clean
 
 distclean: clean
 	rm -rf riscv-fesvr riscv-isa-sim $(CV_CORE_PKG) work
