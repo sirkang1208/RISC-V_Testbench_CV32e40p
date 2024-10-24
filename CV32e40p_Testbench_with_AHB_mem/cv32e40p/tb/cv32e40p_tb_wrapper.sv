@@ -269,10 +269,10 @@ module cv32e40p_tb_wrapper
         , .HBURST    (M_HBURST0 )
         , .HWDATA    (M_HWDATA0 )
         , .HSEL      (1'b1      )
-        , .HRDATA    (M_HRDATA0     )
-        , .HRESP     (M_HRESP0      )
-        , .HREADYin  (M_HREADY0      )
-        , .HREADYout (S_HREADYout0  )
+        , .HRDATA    (M_HRDATA0    )
+        , .HRESP     (M_HRESP0     )
+        , .HREADYin  (M_HREADY0    )
+        , .HREADYout (M_HREADY0    )
     );
     //---------------------------------------------------------------------------
     mem_ahb #(.P_SLV_ID(1)
@@ -291,12 +291,8 @@ module cv32e40p_tb_wrapper
         , .HRDATA    (M_HRDATA1     )
         , .HRESP     (M_HRESP1      )
         , .HREADYin  (M_HREADY1     )
-        , .HREADYout (S_HREADYout1  )
+        , .HREADYout (M_HREADY1     )
     );    
-
-    assign M_HREADY0 = data_req;
-    // assign hready_i = instr_req;
-    assign M_HREADY1 = M_HREADY0 == 1'b0 ? 1'b1 : 1'b0;
 
 
 endmodule // cv32e40p_tb_wrapper

@@ -17,7 +17,7 @@
 
 module mem_ahb
      #(parameter P_SLV_ID=0
-               , P_SIZE_IN_BYTES=1024
+               , P_SIZE_IN_BYTES=8096
                , P_DELAY=0
                , P_INIT=0)
 (
